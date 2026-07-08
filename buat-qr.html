@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Buat QR Siswa 6B</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+
+body{
+
+ font-family:Arial;
+
+ background:#f4fff4;
+
+ text-align:center;
+
+}
+
+h1{
+
+ color:#198754;
+
+}
+
+.container{
+
+ display:flex;
+
+ flex-wrap:wrap;
+
+ justify-content:center;
+
+ gap:15px;
+
+}
+
+.card{
+
+ background:white;
+
+ width:200px;
+
+ padding:15px;
+
+ border-radius:15px;
+
+ box-shadow:0 3px 10px #ccc;
+
+}
+
+.qr{
+
+ margin:auto;
+
+}
+
+.nama{
+
+ font-weight:bold;
+
+ margin-top:10px;
+
+}
+
+.kode{
+
+ color:#198754;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>QR CODE SISWA</h1>
+
+<h2>KELAS 6B SDN JAWILAN</h2>
+
+<div class="container" id="daftar"></div>
+
+<script src="siswa.js"></script>
+
+<script>
+
+let area=document.getElementById("daftar");
+
+siswa.forEach(function(data){
+
+let kartu=document.createElement("div");
+
+kartu.className="card";
+
+kartu.innerHTML=
+
+`
+
+<div class="qr" id="${data.kode}"></div>
+
+<div class="nama">${data.nama}</div>
+
+<div class="kode">${data.kode}</div>
+
+`;
+
+area.appendChild(kartu);
+
+new QRCode(
+
+document.getElementById(data.kode),
+
+{
+
+ text:data.kode,
+
+ width:120,
+
+ height:120
+
+}
+
+);
+
+});
+
+</script>
+
+</body>
+
+</html>
