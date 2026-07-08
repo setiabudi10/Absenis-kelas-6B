@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>QR Code Siswa 6B SDN Jawilan</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+
+body{
+
+  font-family:Arial;
+
+  background:#f4fff4;
+
+  padding:20px;
+
+  text-align:center;
+
+}
+
+h1{
+
+  color:#198754;
+
+}
+
+.container{
+
+  display:grid;
+
+  grid-template-columns:repeat(2,1fr);
+
+  gap:15px;
+
+}
+
+.card{
+
+  background:white;
+
+  padding:15px;
+
+  border-radius:10px;
+
+  box-shadow:0 2px 8px #ccc;
+
+}
+
+.qr{
+
+  display:flex;
+
+  justify-content:center;
+
+}
+
+button{
+
+  margin:20px;
+
+  padding:12px 20px;
+
+  background:#198754;
+
+  color:white;
+
+  border:0;
+
+  border-radius:8px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>QR CODE ABSENSI</h1>
+
+<h3>KELAS 6B SDN JAWILAN</h3>
+
+<button onclick="window.print()">Cetak QR</button>
+
+<div class="container" id="daftarQR"></div>
+
+<script>
+
+const siswa = [
+
+"6B001|AIRIN NOVIANI",
+
+"6B002|AISYAH PUTRI",
+
+"6B003|ALFI RIZKI PRATAMA",
+
+"6B004|AYU MULYATI",
+
+"6B005|BILQIS AQILLA USWATUNNISA",
+
+"6B006|DIVA ADITIA PUTRA",
+
+"6B007|DWI SEPTIANI",
+
+"6B008|ELLQIANO ADRIAN FACHRI",
+
+"6B009|ELVITA FIRJAYANTI",
+
+"6B010|FAJRI",
+
+"6B011|FAYSHA DESTIANA AZHAURA",
+
+"6B012|HIKMAH MAULLANA",
+
+"6B013|HILDAN HARDIANSYAH",
+
+"6B014|IKBAL",
+
+"6B015|JZAFRAN ABDUL FATAH",
+
+"6B016|KALILA RIFDA",
+
+"6B017|MIFTAHUL NIZAM",
+
+"6B018|MUHAMAD ALFARIZ",
+
+"6B019|MUHAMAD DIKA",
+
+"6B020|MUHAMAD MAULANA LUTHFIE EL AZZAM",
+
+"6B021|MUHAMAD NUH",
+
+"6B022|MUHAMMAD LUCKY ARJUNA NST",
+
+"6B023|MUHAMMAD RASYIID SAPUTRA",
+
+"6B024|MUKHYATTULLOH",
+
+"6B025|NIKEN APRILIA",
+
+"6B026|NOVALIA",
+
+"6B027|NUR HAYATI",
+
+"6B028|RUBI ANDINI",
+
+"6B029|SAPUTRA",
+
+"6B030|SATRIA MANDAYA",
+
+"6B031|SINTA BELA",
+
+"6B032|TASYA",
+
+"6B033|ULIS UMAIRA",
+
+"6B034|WIWIN WILDA NINGSIH",
+
+"6B035|ZAHWA KHOIRUNISA"
+
+];
+
+let tempat=document.getElementById("daftarQR");
+
+siswa.forEach(data=>{
+
+let pecah=data.split("|");
+
+let card=document.createElement("div");
+
+card.className="card";
+
+let qr=document.createElement("div");
+
+qr.className="qr";
+
+card.innerHTML=
+
+"<h4>"+pecah[1]+"</h4>";
+
+card.appendChild(qr);
+
+new QRCode(qr,{
+
+text:pecah[0],
+
+width:120,
+
+height:120
+
+});
+
+tempat.appendChild(card);
+
+});
+
+</script>
+
+</body>
+
+</html>
